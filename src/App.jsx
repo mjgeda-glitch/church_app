@@ -1,7 +1,9 @@
-
+import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <div className="app">
       <header className="navbar">
@@ -10,13 +12,25 @@ function App() {
           <span>Jesus Our Hope Church</span>
         </a>
 
-        <nav className="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">About</a>
-          <a href="#sermons">Sermons</a>
-          <a href="#events">Events</a>
-          <a href="#contact">Contact</a>
-        </nav>
+        
+<button
+  className="menu-toggle"
+  type="button"
+  aria-label={menuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+  aria-expanded={menuOpen}
+  onClick={() => setMenuOpen(!menuOpen)}
+>
+  {menuOpen ? 'Close ✕' : 'Menu ☰'}
+</button>
+
+<nav className={`nav-links ${menuOpen ? 'nav-links-open' : ''}`}>
+  <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
+  <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+  <a href="#sermons" onClick={() => setMenuOpen(false)}>Sermons</a>
+  <a href="#events" onClick={() => setMenuOpen(false)}>Events</a>
+  <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+</nav>
+
 
         <a className="nav-button" href="#visit">
           Plan a Visit
