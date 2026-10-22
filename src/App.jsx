@@ -1,5 +1,35 @@
 import { useState } from 'react'
+import EventCard from './components/EventCard'
 import './App.css'
+
+
+const events = [
+  {
+    id: 1,
+    title: 'Sunday Worship Service',
+    date: 'SUN, NOV 01',
+    time: '9:00 AM – 11:00 AM',
+    description:
+      'Join us as we worship God and learn from His Word.',
+  },
+  {
+    id: 2,
+    title: 'Bible Study and Prayer',
+    date: 'WED, NOV 04',
+    time: '7:00 PM – 8:00 PM',
+    description:
+      'Grow in faith through Scripture, prayer, and fellowship.',
+  },
+  {
+    id: 3,
+    title: 'Church Fellowship',
+    date: 'SUN, NOV 08',
+    time: '1:00 PM – 3:00 PM',
+    description:
+      'Spend time together and encourage one another in Christ.',
+  },
+]
+
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -91,6 +121,30 @@ function App() {
             news of Jesus Christ.
           </p>
         </section>
+
+        
+<section className="upcoming-events" id="events">
+  <div className="events-heading">
+    <span className="section-label">BE PART OF OUR COMMUNITY</span>
+    <h2>Upcoming Events</h2>
+    <p>
+      Join us for worship, Bible study, and fellowship.
+    </p>
+  </div>
+
+  <div className="events-list">
+    {events.map((event) => (
+      <EventCard
+        key={event.id}
+        title={event.title}
+        date={event.date}
+        time={event.time}
+        description={event.description}
+      />
+    ))}
+  </div>
+</section>
+
 
         <section className="feature-grid" id="sermons">
           <article className="feature-card">
